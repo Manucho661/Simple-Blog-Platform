@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use Illuminate\Http\Request;
+
 
 class UserController extends Controller
 {
@@ -14,6 +16,7 @@ class UserController extends Controller
             'name' => 'required'
 
         ]);
+        User::create($incomingFields);
         return "Hello, it is time to login";
     }
 }

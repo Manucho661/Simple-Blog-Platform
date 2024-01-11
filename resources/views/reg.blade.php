@@ -7,7 +7,7 @@
     <title>Document</title>
 </head>
 <body>
-    <form action="">
+    <form action="/blog" method="POST">
 @csrf
 <label for="name"> Enter Name</label>
 <input type="text" name="name">
@@ -19,7 +19,7 @@
 <br>
 <label for="password"> Enter password</label>
 <input type="password" name="password">
-
+<button>Register</button>
 
     </form>
 </body>

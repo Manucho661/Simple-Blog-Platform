@@ -19,7 +19,8 @@ Route::get('/', function () {
 });
 
 //usercontroller routes
-Route::post('/register', [UserController::class, 'register']);
+
 Route::get('/reg', [UserController::class, 'reg']);
 //POSTcontroller routes
+Route::post('/blog', [UserController::class, 'ShowBlogPage']);
 

@@ -22,5 +22,7 @@
 <button>Register</button>
 
     </form>
+
+    <a href="/reg"> Register</a>
 </body>
 </html>

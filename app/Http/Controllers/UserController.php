@@ -19,4 +19,9 @@ class UserController extends Controller
         User::create($incomingFields);
         return "Hello, it is time to login";
     }
+
+
+    public function reg(){
+        return view ('reg');
+    }
 }

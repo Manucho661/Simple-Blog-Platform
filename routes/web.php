@@ -21,6 +21,10 @@ Route::get('/', function () {
 //usercontroller routes
 
 Route::get('/reg', [UserController::class, 'reg']);
+Route::get('/log', [UserController::class, 'log']);
 //POSTcontroller routes
 Route::post('/blog', [UserController::class, 'ShowBlogPage']);
+
+Route::post('/blogOne', [UserController::class, 'ShowBlogPageOne']);
+
 

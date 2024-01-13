@@ -16,6 +16,13 @@ class UserController extends Controller
         return view ('reg');
     }
 
+    public function log(){
+
+        return view ('log');
+    }
+
+
+
     public function ShowBlogPage( Request $request){
 
         $registrationData= $request->validate([
@@ -27,4 +34,21 @@ class UserController extends Controller
 
         return view ('blog');
     }
+
+    public function ShowBlogPageOne( Request $request){
+
+        $registrationData= $request->validate([
+            'email' => 'required',
+            'password' => 'required',
+            'name' => 'required'
+        ]);
+if (auth()->attempt(['email' => $registrationData['email'], 'password'=> $registrationData['password']])){
+
+        return view ('blog');
+}
+else{
+    return view('log');
+}
+    }
+
 }

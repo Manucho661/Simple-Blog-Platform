@@ -12,5 +12,7 @@
     
 
     <a href="/reg"> Register</a>
+    <a href="/log"> login</a>
+
 </body>
 </html>

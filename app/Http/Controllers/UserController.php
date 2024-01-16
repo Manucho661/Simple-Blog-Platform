@@ -32,7 +32,7 @@ class UserController extends Controller
         ]);
         User::create($registrationData);
 
-        return view ('blog');
+        return view ('log');
     }
 
     public function ShowBlogPageOne( Request $request){
@@ -47,7 +47,10 @@ if (auth()->attempt(['email' => $registrationData['email'], 'password'=> $regist
         return view ('blog');
 }
 else{
-    return view('log');
+    
+// Authentication failed
+return back()->withErrors(['email' => 'Invalid credentials']);
+
 }
     }
 

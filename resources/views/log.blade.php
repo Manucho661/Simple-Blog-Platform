@@ -19,6 +19,12 @@
 <br>
 <label for="password"> Enter password</label>
 <input type="password" name="password">
+
+@error('email')
+            <span class="error">{{ $message }}</span>
+        @enderror
+
+
 <button>Login</button>
 
     </form>

@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\PostController;
 use App\Http\Controllers\UserController;
 
 /*
@@ -22,9 +23,11 @@ Route::get('/', function () {
 
 Route::get('/reg', [UserController::class, 'reg']);
 Route::get('/log', [UserController::class, 'log']);
-//POSTcontroller routes
+
 Route::post('/blog', [UserController::class, 'ShowBlogPage']);
 
 Route::post('/blogOne', [UserController::class, 'ShowBlogPageOne']);
 
+//POSTcontroller routes
+Route::post('/create_post', [PostController::class, 'MCreatePost']);
 

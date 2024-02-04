@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Post;
 use App\Models\User;
 use Illuminate\Http\Request;
 
@@ -43,8 +44,14 @@ class UserController extends Controller
             'name' => 'required'
         ]);
 if (auth()->attempt(['email' => $registrationData['email'], 'password'=> $registrationData['password']])){
-
-        return view ('blog');
+    $request->session()->regenerate();
+    Post::all();
+    $Posts=[];
+    if(auth()->check()){
+        $posts = auth() ->User()->retrieveposts()->latest()->get();
+    }
+        return view ('blog', ['posts'=>$posts]);
+    
 }
 else{
     

@@ -30,4 +30,9 @@ Route::post('/blogOne', [UserController::class, 'ShowBlogPageOne']);
 
 //POSTcontroller routes
 Route::post('/create_post', [PostController::class, 'MCreatePost']);
+Route::post('/logout', [PostController::class, 'Logout']);
+Route::get('/EditPost/{posts}',[PostController::class,'EditPostF']);
+Route::put('/EditPost/{posts}',[PostController::class,'UpdatePostF']);
+Route::put('/EditPost/{posts}',[PostController::class,'UpdatePostF']);
+Route::delete('/deletePost/{posts}',[PostController::class,'deletePostF']);
 

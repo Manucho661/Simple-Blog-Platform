@@ -18,7 +18,9 @@ class PostController extends Controller
         $BlogContent['user_id'] = auth()->id();
 
         Post::create($BlogContent);
-        
+
+        $blogPosts=Post::where('user_id',auth()->id())->get();
+        return view('blog', ['posts' =>$blogPosts]);
     }
 
     public function Logout(){
@@ -41,8 +43,9 @@ $IncommingFields= $request -> validate ([
 
 
 $posts->update($IncommingFields );
+$blogPosts=auth()-> User()->retrieveposts()->latest()->get();
 
- return view('blog', ['posts' =>$posts] );
+ return view('blog', ['posts' =>$blogPosts] );
 
 }
 
@@ -51,7 +54,8 @@ public function deletePostF(Post $posts){
     if(auth()->user()->id===$posts['user_id']){
         $posts->delete();
     }
-    return view('blog',['posts' =>$posts]);
+    $blogPosts=Post::where('user_id',auth()->id())->get();
+ return view('blog', ['posts' =>$blogPosts]);
 }
 
 }

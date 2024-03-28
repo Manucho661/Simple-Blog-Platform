@@ -64,3 +64,18 @@ border-radius: 2px;
     display: flex;
     justify-content: flex-end;
 }
+.categories{
+    background-color: white;
+    margin-top: 2px;
+    padding: 10px;
+    border-radius: 2px;
+    text-decoration: none;
+
+}
+.categoriesOne{
+    margin-right: 10px;
+    text-decoration: none;
+}
+a{
+    text-decoration: none;
+}

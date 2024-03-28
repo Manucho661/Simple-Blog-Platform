@@ -12,7 +12,8 @@ class PostController extends Controller
     public function MCreatePost(Request $request){
         $BlogContent = $request -> validate ([
             'body' => 'required',
-            'title' => 'required'
+            'title' => 'required',
+            'categories' => 'required'
         
         ]);
         $BlogContent['user_id'] = auth()->id();
@@ -55,7 +56,7 @@ public function deletePostF(Post $posts){
         $posts->delete();
     }
     $blogPosts=Post::where('user_id',auth()->id())->get();
- return view('blog', ['posts' =>$blogPosts]);
+ return view('blog', ['postsz' =>$blogPosts]);
 }
 
 }

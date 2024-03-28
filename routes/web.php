@@ -1,8 +1,10 @@
 <?php
 
+use App\Models\Post;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\CategoriesController;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,7 +18,10 @@ use App\Http\Controllers\UserController;
 */
 
 Route::get('/', function () {
-    return view('index');
+    $posts = Post::where('user_id', auth()->id())->get();
+$category = 'Politcs';
+            
+    return view('blog', ['posts'=>$posts]);
 });
 
 //usercontroller routes
@@ -36,3 +41,9 @@ Route::put('/EditPost/{posts}',[PostController::class,'UpdatePostF']);
 Route::put('/EditPost/{posts}',[PostController::class,'UpdatePostF']);
 Route::delete('/deletePost/{posts}',[PostController::class,'deletePostF']);
 
+// PostCategories
+Route::get('politicsPage', [CategoriesController::class, 'politics']) -> name('politics');
+Route::get('relationshipsPage', [CategoriesController::class, 'relationships']) -> name('relationships');
+Route::get('educationPage', [CategoriesController::class, 'education']) -> name('education');
+Route::get('lifestylePage', [CategoriesController::class, 'lifestyle']) -> name('lifestyle');
+Route::get('allPage', [CategoriesController::class, 'all']) -> name('all');

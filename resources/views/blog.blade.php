@@ -37,6 +37,16 @@
     <input type="text" name="title" id="" placeholder="title">
     <br>
     <br>
+    <label for="category">Select a Category</label>
+    <select name="categories">
+
+<option value="politics">Politics</option>
+<option value="relationships">Relationships</option>
+<option value="lifestyle">Lifestyle</option>
+<option value="large">Education</option>
+    </select>
+<br>
+<br>
     <label for="body"> Body</label>
     <br>
     <textarea name="body" id="" cols="30" rows="10" placeholder="content.."></textarea>
@@ -54,6 +64,7 @@
             @foreach($posts as $posts)
             <h5>{{$posts['title']}}</h5>
             <p>{{$posts['body']}}</p>
+            
             <div class="ED">
          <a style="text-decoration:none;" href="/EditPost/{{$posts->id}}">Edit</a>
          <a style="text-decoration:none; margin-left:12px;" href="/DeletePost/{{$posts->id}}">Delete</a>
@@ -71,18 +82,60 @@
         </div>
     {{-- End class 'YourPosts ONE'--}}
 
-
-    <div class="Categories">
-        <h3>Categories</h3>
+<div class="categoriesOne">
+    <h3>Categories</h3>
+    <div class="categories">
+        
+        <a href="{{route('politics')}}">Politics</a>
+        <br>
+        <a href="{{route('education')}}">Education</a>
+        <br>
+        <a href="{{route('relationships')}}">Relationships</a>
+        <br>
+        <a href="{{route('lifestyle')}}">Lifestyle</a>
+<br>
+<a href="{{route('all')}}">All</a>
         </div>
 {{-- End of the 'categories' class --}}
-   
+</div>
    
     </div>
 {{-- End of the 'Cy' class --}}
 
     @else
-    <h1>login first</h1>
+    
+
+        
+    <form action="/blogOne" method="POST">
+        @csrf
+        <div class="loginform">
+            
+        
+         <h3 style="margin-left:3vw; color:blue;">SOFTECH</h3> 
+        <label for="name"> Enter Name</label>
+        <br>
+        <input type="text" name="name">
+        <br>
+        <br>
+        <label for="email">Enter email</label>
+        <br>
+        <input type="email" name="email">
+        
+        <br>
+        <br>
+        <label for="password"> Enter password</label>
+        <br>
+        <input type="password" name="password">
+        <br>
+        @error('email')
+                    <span class="error">{{ $message }}</span>
+                @enderror
+        
+        <br>
+        
+        
+        <button style="margin-left:5%;">Login</button>
+
     @endauth 
 </body>
 </html>
